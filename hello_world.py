@@ -12,10 +12,23 @@ def print_welcome_message():
     print()
 
 
+def get_nonnegative_integer(prompt):
+    """Prompts until the user provides a whole number that is zero or greater."""
+    while True:
+        try:
+            value = int(input(prompt))
+            if value < 0:
+                print("Please enter a number that is zero or greater.")
+                continue
+            return value
+        except ValueError:
+            print("Please enter a valid whole number.")
+
+
 def get_user_info():
     """Prompts the user to enter their name, age, and favorite color, then returns the data as a dictionary."""
     name = input("What is your name? ")
-    age = int(input("How old are you? "))
+    age = get_nonnegative_integer("How old are you? ")
     favorite_color = input("What is your favorite color? ")
     return {"name": name, "age": age, "favorite_color": favorite_color}
 
@@ -50,7 +63,7 @@ def display_personalized_greeting(user_info, birth_year):
 def count_to_number():
     """Prompts for a number and counts up to it with a FizzBuzz game:
     multiples of 3 show Fizz, multiples of 5 show Buzz, multiples of both show FizzBuzz."""
-    max_count = int(input("Enter a number to count up to: "))
+    max_count = get_nonnegative_integer("Enter a number to count up to: ")
     print(f"\nCounting from 1 to {max_count}:")
     for i in range(1, max_count + 1):
         if i % 3 == 0 and i % 5 == 0:
@@ -66,7 +79,7 @@ def count_to_number():
 
 def multiplication_table():
     """Generates and displays a multiplication table of a user-specified size using nested loops."""
-    size = int(input("Enter the size of multiplication table (e.g., 10): "))
+    size = get_nonnegative_integer("Enter the size of multiplication table (e.g., 10): ")
     print(f"\nMultiplication Table ({size}x{size}):")
     for row in range(1, size + 1):
         row_values = []

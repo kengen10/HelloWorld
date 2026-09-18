@@ -1,0 +1,6 @@
+User Information Log
+==============================
+Name: Sam
+Age: 30
+Favorite_color: Green
+
